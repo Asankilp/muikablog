@@ -21,6 +21,7 @@ interface Post {
 		tags: string[];
 		category?: string;
 		published: Date;
+		abbrlink?: number | string;
 	};
 }
 
@@ -39,6 +40,11 @@ function formatDate(date: Date) {
 
 function formatTag(tagList: string[]) {
 	return tagList.map((t) => `#${t}`).join(" ");
+}
+
+function getPostUrl(post: Post) {
+	const slug = post.data.abbrlink?.toString() ?? post.slug;
+	return getPostUrlBySlug(slug);
 }
 
 onMount(async () => {
@@ -75,8 +81,8 @@ onMount(async () => {
 	);
 
 	const groupedPostsArray = Object.keys(grouped).map((yearStr) => ({
-		year: Number.parseInt(yearStr),
-		posts: grouped[Number.parseInt(yearStr)],
+		year: Number.parseInt(yearStr, 10),
+		posts: grouped[Number.parseInt(yearStr, 10)],
 	}));
 
 	groupedPostsArray.sort((a, b) => b.year - a.year);
@@ -105,7 +111,7 @@ onMount(async () => {
 
             {#each group.posts as post}
                 <a
-                        href={getPostUrlBySlug(post.slug)}
+                        href={getPostUrl(post)}
                         aria-label={post.data.title}
                         class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
                 >

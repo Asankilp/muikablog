@@ -10,19 +10,40 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
+import bcryptjs from "bcryptjs";
+import CryptoJS from "crypto-js";
 import { licenseConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { profileConfig, siteConfig } from "../../config";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
-import CryptoJS from "crypto-js";
-import bcryptjs from "bcryptjs";
+import { generateAbbrlink } from "../../utils/permalink.js";
+
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+	return blogEntries.map((entry) => {
+		let slug;
+
+		// 检查 frontmatter 中是否存在 abbrlink
+		if (entry.data.abbrlink) {
+			// 如果存在，直接使用它
+			slug = entry.data.abbrlink.toString();
+		} else {
+			// 如果不存在，根据文章的唯一 ID (entry.id) 自动生成一个新的
+			// entry.id 通常是 "collection/file-name.md"，非常适合作为唯一输入
+			slug = generateAbbrlink(entry.id);
+		}
+
+		return {
+			params: { slug: slug },
+			props: { entry: entry },
+		};
+	});
+
+	// return blogEntries.map((entry) => ({
+	// 	params: { slug: entry.slug },
+	// 	props: { entry },
+	// }));
 }
 
 const { entry } = Astro.props;

@@ -7,6 +7,11 @@ const { page } = Astro.props;
 
 let delay = 0;
 const interval = 50;
+
+function getPostUrl(entry: CollectionEntry<"posts">) {
+	const slug = entry.data.abbrlink?.toString() ?? entry.slug;
+	return getPostUrlBySlug(slug);
+}
 ---
 <div class="transition flex flex-col rounded-[var(--radius-large)] bg-[var(--card-bg)] py-1 md:py-0 md:bg-transparent md:gap-4 mb-4">
     {page.data.map((entry: CollectionEntry<"posts">) => (
@@ -17,7 +22,7 @@ const interval = 50;
                 category={entry.data.category}
                 published={entry.data.published}
                 updated={entry.data.updated}
-                url={getPostUrlBySlug(entry.slug)}
+                url={getPostUrl(entry)}
                 image={entry.data.image}
                 description={entry.data.description}
                 draft={entry.data.draft}
