@@ -26,6 +26,8 @@ const postsCollection = defineCollection({
 		prevSlug: z.string().default(""),
 		nextTitle: z.string().default(""),
 		nextSlug: z.string().default(""),
+
+		abbrlink: z.union([z.string(), z.number()]).optional(),
 	}),
 });
 const specCollection = defineCollection({

@@ -15,19 +15,123 @@ if (!friendsPost) {
 const { Content } = await render(friendsPost);
 const items = [
 	{
-		title: "Astro",
-		imgurl: "https://avatars.githubusercontent.com/u/44914786?s=48&v=4",
-		desc: "The web framework for content-driven websites. ⭐️ Star to support our work!",
-		siteurl: "https://github.com/withastro/astro",
-		tags: ["Framework"],
+		title: "无梦梦游记",
+		imgurl: "https://bkryofu.cn/resources/avatar.webp",
+		desc: "河城凌风的独立博客",
+		siteurl: "https://bkryofu.cn/",
 	},
 	{
-		title: "Mizuki Docs",
+		title: "晓空blog",
 		imgurl:
-			"http://q.qlogo.cn/headimg_dl?dst_uin=3231515355&spec=640&img_type=jpg",
-		desc: "Mizuki User Manual",
-		siteurl: "https://docs.mizuki.mysqil.com",
-		tags: ["Docs"],
+			"https://blog.moeworld.tech/wp-content/themes/kratos-pjax-master/static/images/photo.jpg",
+		desc: "咦，我是谁，我在哪？",
+		siteurl: "https://blog.moeworld.tech/",
+	},
+	{
+		title: "中二病晚期",
+		imgurl:
+			"https://cravatar.cn/avatar/avatar/f28c0de50214c44f67d38e688495d6b7",
+		desc: "Hello！I'm 中二病晚期",
+		siteurl: "https://imfurry.com/",
+	},
+	{
+		title: "迷失博客",
+		imgurl: "https://www.mishi23.com/favicon.png",
+		desc: "分享好用的软件和源码",
+		siteurl: "https://www.mishi23.com/",
+	},
+	{
+		title: "云藉",
+		imgurl: "https://kumosya.top/image/avatar.webp",
+		desc: "记录滴滴点点，穿梭片片汪洋",
+		siteurl: "https://kumosya.top/",
+	},
+	{
+		title: "冰橘の小窝",
+		imgurl: "https://blog.moe233.net/images/tangerine.png",
+		desc: "(⊙ω⊙)你找到我了",
+		siteurl: "https://blog.moe233.net",
+	},
+	{
+		title: "洛屿的小站",
+		imgurl:
+			"https://cravatar.cn/avatar/6fa57e21db3ba5961f18a8ae75d0a081?s=200&r=g&d=retro",
+		desc: "嗨，靓仔，今天也要有个好心情哦",
+		siteurl: "https://www.drluo.top/",
+	},
+	{
+		title: "lhDream",
+		imgurl: "https://blog.luhua.site/img/avatar.jpg",
+		desc: "醉后不知天在水，满船清梦压星河。",
+		siteurl: "https://blog.luhua.site",
+	},
+	{
+		title: "JUKAI.SITE",
+		imgurl: "https://s2.loli.net/2024/08/05/nctRb3p19AwuGrx.png",
+		desc: "我喜欢听花开的声音，更想自由地深情地呼吸",
+		siteurl: "https://jukai.site",
+	},
+	{
+		title: "执行程序の天境小屋🥝",
+		imgurl: "https://i.p-i.vip/68/20250316-67d6818047734.jpg",
+		desc: "The boy who lived",
+		siteurl: "https://blog.hanta2011.top/",
+	},
+	{
+		title: "小城寒风",
+		imgurl:
+			"https://blog.atago.moe/wp-content/uploads/2023/08/头像atago512隐写.png",
+		desc: "驻足现实，仰望星空，率性而活",
+		siteurl: "https://blog.atago.moe",
+	},
+	{
+		title: "花的研究笔记",
+		imgurl: "https://qiniuresources.huaum.com/blog/icon1.png",
+		desc: "代码不会说谎，但人会。",
+		siteurl: "https://huaum.com",
+	},
+	{
+		title: "汐塔魔法屋",
+		imgurl: "https://blog.storical.space/images/icon.png",
+		desc: "种下一颗有故事的种子，让它带着魔法和奇迹生根发芽",
+		siteurl: "https://blog.storical.space/",
+	},
+	{
+		title: "梦想之都",
+		imgurl:
+			"https://cdn.img.dreamerhe.cn/picx-images-hosting/tx.1seyrn6g84.webp",
+		desc: "朝着梦想前进！",
+		siteurl: "https://blog.dreamerhe.cn/",
+	},
+	{
+		title: "水碧枫的甜点屋",
+		imgurl: "https://www.crystmaple.net/images/apple-touch-icon-next.png",
+		desc: "提拉米苏、南瓜派与红茶",
+		siteurl: "https://www.crystmaple.net",
+	},
+	{
+		title: "氧气博客",
+		imgurl: "http://beisent.com/img/favicon.ico",
+		desc: "发掘世界的真相",
+		siteurl: "http://beisent.com/",
+	},
+	{
+		title: "拾光小阁",
+		imgurl: "https://bear556.top/img/avatar.png",
+		desc: "万钟则不辩礼仪而受之，万钟于我美滋滋",
+		siteurl: "https://bear556.top",
+	},
+	{
+		title: "雨间星辰",
+		imgurl: "https://img.sprinkle.moe/cover/logo.jpg",
+		desc: "去看看烁雨星辰！",
+		siteurl: "https://sprinkle.moe",
+	},
+	{
+		title: "Jame",
+		imgurl: "https://jame.work/favicon.ico",
+		desc: "随笔",
+		siteurl: "https://jame.work",
 	},
 ];
 
@@ -46,7 +150,7 @@ const shuffledItems = shuffleArray(items);
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">
-                {shuffledItems.map((item) => (
+                {items.map((item) => (
                     <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
                         <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
                             <img src={item.imgurl} alt="站点头像" class="w-full h-full object-cover">
@@ -63,7 +167,7 @@ const shuffledItems = shuffleArray(items);
                                     <span class="transition text-50 text-sm font-medium">
                                         {tag}
                                     </span>))}
-                                    {!(item.tags && item.tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
+                                    {/* {!(item.tags && item.tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>} */}
                                 </div>
                             </div>
                         </div>
