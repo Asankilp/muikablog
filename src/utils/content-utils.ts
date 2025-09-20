@@ -2,6 +2,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
+import { generateAbbrlink } from "@/utils/permalink";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -28,13 +29,13 @@ export async function getSortedPosts() {
 	for (let i = 1; i < sorted.length; i++) {
 		const prevPost = sorted[i - 1];
 		sorted[i].data.nextSlug =
-			prevPost.data.abbrlink?.toString() ?? prevPost.slug;
+			prevPost.data.abbrlink?.toString() ?? generateAbbrlink(prevPost.id);
 		sorted[i].data.nextTitle = prevPost.data.title;
 	}
 	for (let i = 0; i < sorted.length - 1; i++) {
 		const nextPost = sorted[i + 1];
 		sorted[i].data.prevSlug =
-			nextPost.data.abbrlink?.toString() ?? nextPost.slug;
+			nextPost.data.abbrlink?.toString() ?? generateAbbrlink(nextPost.id);
 		sorted[i].data.prevTitle = nextPost.data.title;
 	}
 

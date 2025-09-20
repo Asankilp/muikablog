@@ -1,10 +1,10 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import * as fs from "node:fs";
+import { generateAbbrlink } from "@utils/permalink";
 import type { APIContext, GetStaticPaths } from "astro";
 import satori from "satori";
 import sharp from "sharp";
-
 import { profileConfig, siteConfig } from "../../config";
 
 type Weight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
@@ -28,7 +28,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const publishedPosts = allPosts.filter((post) => !post.data.draft);
 
 	return publishedPosts.map((post) => ({
-		params: { slug: post.data.abbrlink?.toString() ?? post.slug },
+		params: {
+			slug: post.data.abbrlink?.toString() ?? generateAbbrlink(post.id),
+		},
 		props: { post },
 	}));
 };

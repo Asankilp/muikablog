@@ -7,6 +7,7 @@ import { parse as htmlParser } from "node-html-parser";
 import sanitizeHtml from "sanitize-html";
 import { siteConfig } from "@/config";
 import { getSortedPosts } from "@/utils/content-utils";
+import { generateAbbrlink } from "@/utils/permalink";
 
 const markdownParser = new MarkdownIt();
 
@@ -98,7 +99,7 @@ export async function GET(context: APIContext) {
 			title: post.data.title,
 			description: post.data.description,
 			pubDate: post.data.published,
-			link: `/posts/${post.data.abbrlink?.toString() ?? post.slug}/`,
+			link: `/posts/${post.data.abbrlink?.toString() ?? generateAbbrlink(post.id)}/`,
 			// sanitize the new html string with corrected image paths
 			content: sanitizeHtml(html.toString(), {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),

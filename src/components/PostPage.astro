@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { generateAbbrlink } from "@utils/permalink";
 import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "./PostCard.astro";
 
@@ -9,7 +10,7 @@ let delay = 0;
 const interval = 50;
 
 function getPostUrl(entry: CollectionEntry<"posts">) {
-	const slug = entry.data.abbrlink?.toString() ?? entry.slug;
+	const slug = entry.data.abbrlink?.toString() ?? generateAbbrlink(entry.id);
 	return getPostUrlBySlug(slug);
 }
 ---
