@@ -13,7 +13,13 @@ if (!friendsPost) {
 }
 
 const { Content } = await render(friendsPost);
-const items = [
+const items: {
+	title: string;
+	imgurl: string;
+	desc: string;
+	siteurl: string;
+	tags?: string[];
+}[] = [
 	{
 		title: "无梦梦游记",
 		imgurl: "https://bkryofu.cn/resources/avatar.webp",
@@ -29,8 +35,8 @@ const items = [
 	},
 	{
 		title: "ErrOrO's Space",
-		imgurl: "https://blog.erroro.moe/_astro/avatar.BJ4-g6fK_Z1yIT1n.webp",
-		desc: "nya",
+		imgurl: "https://blog.erroro.moe/assets/avatar.jpg",
+		desc: "OrO?OrO!",
 		siteurl: "https://blog.erroro.moe/",
 	},
 	{
