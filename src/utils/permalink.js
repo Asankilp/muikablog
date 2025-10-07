@@ -8,5 +8,5 @@ import { crc16 } from "crc";
  */
 export function generateAbbrlink(inputString) {
 	// 使用 crc16 算法，与 hexo-abbrlink 插件的默认行为相似
-	return crc16(inputString).toString(16);
+	return Number.parseInt(crc16(inputString), 16).toString(16);
 }
