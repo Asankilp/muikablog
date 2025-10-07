@@ -2,7 +2,7 @@
 title: 笔记·PMI点互信息与NLP
 published: 2025-07-09
 description: 大一畜生没学概率论怎么办？
-tags: [NLP, 概率论]
+tags: ["NLP", "论文"]
 category: 笔记
 draft: false
 abbrlink: 3219
