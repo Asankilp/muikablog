@@ -19,6 +19,7 @@ import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 
 // 定义站点语言
 const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
+const googleAnalyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 
 export const siteConfig: SiteConfig = {
 	title: "雪萌天文台",
@@ -124,6 +125,11 @@ export const siteConfig: SiteConfig = {
 		//   sizes: '32x32',              // 可选，图标大小
 		// }
 	],
+	analytics: {
+		google: {
+			measurementId: "G-ZVRBXJ2DLK",
+		},
+	},
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	enable: true, // 启用全屏壁纸功能,非Banner模式下生效
